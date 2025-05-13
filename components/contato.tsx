@@ -9,6 +9,48 @@ import { useState } from "react"
 
 export function Contato() {
   const [enviando, setEnviando] = useState(false)
+  const [mensagem, setMensagem] = useState("")
+  const [tipo, setTipo] = useState<"success" | "error" | "">("")
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setEnviando(true)
+    setMensagem("")
+    setTipo("")
+
+    try {
+      const form = e.currentTarget
+      const formData = new FormData(form)
+      formData.append("_url", "https://lucasduran-dev.vercel.app/")
+      formData.append("_webhook", "https://lucasduran-dev.vercel.app/")
+      
+      const response = await fetch("https://formsubmit.co/ajax/lucasxd1939@gmail.com", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Origin': 'https://lucasduran-dev.vercel.app',
+          'Referer': 'https://lucasduran-dev.vercel.app'
+        },
+        body: formData
+      })
+
+      const data = await response.json()
+
+      if (data.success === "true") {
+        setMensagem("Mensagem enviada com sucesso!")
+        setTipo("success")
+        form.reset()
+      } else {
+        setMensagem("Erro ao enviar mensagem. Tente novamente.")
+        setTipo("error")
+      }
+    } catch (error) {
+      setMensagem("Erro ao enviar mensagem. Tente novamente.")
+      setTipo("error")
+    } finally {
+      setEnviando(false)
+    }
+  }
 
   return (
     <section id="contato" className="py-16">
@@ -68,12 +110,7 @@ export function Contato() {
             <CardDescription>Preencha o formulário abaixo para entrar em contato</CardDescription>
           </CardHeader>
           <CardContent>
-            <form 
-              action="https://formsubmit.co/lucasxd1939@gmail.com" 
-              method="POST"
-              onSubmit={() => setEnviando(true)}
-              className="space-y-4"
-            >
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="nome" className="text-sm font-medium">
@@ -100,15 +137,19 @@ export function Contato() {
                 </label>
                 <Textarea required name="message" id="mensagem" placeholder="Sua mensagem" rows={5} />
               </div>
+              {mensagem && (
+                <div className={`text-sm ${tipo === "success" ? "text-green-500" : "text-red-500"}`}>
+                  {mensagem}
+                </div>
+              )}
               <Button type="submit" className="w-full" disabled={enviando}>
                 {enviando ? "Enviando..." : "Enviar Mensagem"}
               </Button>
               <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="https://lucasduran-dev.vercel.app/" />
-              <input type="hidden" name="_subject" value="Novo contato do portfólio" />
               <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_autoresponse" value="Recebi sua mensagem! Responderei em breve." />
               <input type="hidden" name="_url" value="https://lucasduran-dev.vercel.app/" />
+              <input type="hidden" name="_webhook" value="https://lucasduran-dev.vercel.app/" />
+              <input type="hidden" name="_next" value="https://lucasduran-dev.vercel.app/" />
             </form>
           </CardContent>
         </Card>
