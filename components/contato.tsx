@@ -69,7 +69,7 @@ export function Contato() {
           </CardHeader>
           <CardContent>
             <form 
-              action="https://formsubmit.co/lucasxd1939@gmail.com" 
+              action="https://formsubmit.co/bHVjYXN4ZDE5MzlAZ21haWwuY29t" 
               method="POST"
               onSubmit={() => setEnviando(true)}
               className="space-y-4"
@@ -105,6 +105,7 @@ export function Contato() {
               </Button>
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_next" value="https://lucasduran-dev.vercel.app/" />
+              <input type="hidden" name="_template" value="table" />
             </form>
           </CardContent>
         </Card>
