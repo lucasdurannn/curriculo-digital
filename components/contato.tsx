@@ -108,6 +108,7 @@ export function Contato() {
               <input type="hidden" name="_subject" value="Novo contato do portfólio" />
               <input type="hidden" name="_template" value="table" />
               <input type="hidden" name="_autoresponse" value="Recebi sua mensagem! Responderei em breve." />
+              <input type="hidden" name="_url" value="https://lucasduran-dev.vercel.app/" />
             </form>
           </CardContent>
         </Card>
