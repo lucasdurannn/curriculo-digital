@@ -12,13 +12,13 @@ export function Sobre() {
           </h1>
           <h2 className="text-2xl font-medium text-muted-foreground">Desenvolvedor Full Stack</h2>
           <p className="text-muted-foreground">
-            Desenvolvedor apaixonado por criar soluções web e mobile inovadoras. Com experiência em desenvolvimento
+            Desenvolvedor apaixonado por criar soluções web inovadoras. Com experiência em desenvolvimento
             front-end e back-end, busco constantemente aprender novas tecnologias e aprimorar minhas habilidades.
           </p>
 
           <div className="flex flex-wrap gap-3 pt-4">
             <Button asChild>
-              <a href="/curriculo.pdf" download>
+              <a href="/lucas_duran.pdf" download>
                 <Download className="mr-2 h-4 w-4" /> Baixar CV
               </a>
             </Button>
