@@ -79,7 +79,7 @@ export function Contato() {
             <div className="flex items-center gap-3">
               <Phone className="h-5 w-5 text-primary" />
               <a href="tel:+5569992770940" className="hover:text-primary transition-colors">
-                (69) 992770940
+                (69) 99277-0940
               </a>
             </div>
             <div className="flex items-center gap-3">

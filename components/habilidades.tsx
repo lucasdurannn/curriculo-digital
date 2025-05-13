@@ -14,9 +14,9 @@ export function Habilidades() {
       "Styled Components",
       "Redux",
     ],
-    backend: ["Node.js", "Express", "NestJS", "Ruby", "Ruby on Rails"],
+    backend: ["Node.js", "Python", "NestJS", "Ruby", "Ruby on Rails"],
     database: ["MySQL", "PostgreSQL", "Redis", "Prisma"],
-    devops: ["Git", "GitHub", "Docker", "Vercel"],
+    devops: ["Git", "GitHub", "GitLab", "Docker", "Vercel"],
     outros: ["Metodologias Ágeis", "Scrum", "Kanban", "Figma", "Discord", "Trello"],
   }
 
