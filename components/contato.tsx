@@ -69,7 +69,7 @@ export function Contato() {
           </CardHeader>
           <CardContent>
             <form 
-              action="https://formsubmit.co/61c62659a004dedb68a747b09a60baf2" 
+              action="https://formsubmit.co/lucasxd1939@gmail.com" 
               method="POST"
               onSubmit={() => setEnviando(true)}
               className="space-y-4"
