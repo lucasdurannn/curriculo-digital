@@ -21,15 +21,11 @@ export function Contato() {
     try {
       const form = e.currentTarget
       const formData = new FormData(form)
-      formData.append("_url", "https://lucasduran-dev.vercel.app/")
-      formData.append("_webhook", "https://lucasduran-dev.vercel.app/")
       
       const response = await fetch("https://formsubmit.co/ajax/lucasxd1939@gmail.com", {
         method: "POST",
         headers: {
-          'Accept': 'application/json',
-          'Origin': 'https://lucasduran-dev.vercel.app',
-          'Referer': 'https://lucasduran-dev.vercel.app'
+          'Accept': 'application/json'
         },
         body: formData
       })
@@ -147,9 +143,6 @@ export function Contato() {
               </Button>
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_url" value="https://lucasduran-dev.vercel.app/" />
-              <input type="hidden" name="_webhook" value="https://lucasduran-dev.vercel.app/" />
-              <input type="hidden" name="_next" value="https://lucasduran-dev.vercel.app/" />
             </form>
           </CardContent>
         </Card>
