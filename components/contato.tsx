@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react"
+import { Github, Linkedin, Mail, MapPin, Phone, CheckCircle2, XCircle } from "lucide-react"
 import { useState } from "react"
 
 export function Contato() {
@@ -22,29 +22,40 @@ export function Contato() {
       const form = e.currentTarget
       const formData = new FormData(form)
       
+      formData.append("_subject", "Nova mensagem do portfólio - Contato")
+      formData.append("_replyto", form.email.value)
+      formData.append("_from", "Portfólio - Lucas Duran")
+      formData.append("_format", "plain")
+      
       const response = await fetch("https://formsubmit.co/ajax/61c62659a004dedb68a747b09a60baf2", {
         method: "POST",
         headers: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: formData
+        body: JSON.stringify(Object.fromEntries(formData))
       })
 
       const data = await response.json()
 
       if (data.success === "true") {
-        setMensagem("Mensagem enviada com sucesso!")
+        setMensagem("Mensagem enviada com sucesso! Entraremos em contato em breve.")
         setTipo("success")
         form.reset()
       } else {
-        setMensagem("Erro ao enviar mensagem. Tente novamente.")
+        setMensagem("Erro ao enviar mensagem. Por favor, tente novamente.")
         setTipo("error")
       }
     } catch (error) {
-      setMensagem("Erro ao enviar mensagem. Tente novamente.")
+      setMensagem("Erro ao enviar mensagem. Por favor, tente novamente.")
       setTipo("error")
     } finally {
       setEnviando(false)
+      // Limpa a mensagem após 5 segundos
+      setTimeout(() => {
+        setMensagem("")
+        setTipo("")
+      }, 5000)
     }
   }
 
@@ -134,8 +145,17 @@ export function Contato() {
                 <Textarea required name="message" id="mensagem" placeholder="Sua mensagem" rows={5} />
               </div>
               {mensagem && (
-                <div className={`text-sm ${tipo === "success" ? "text-green-500" : "text-red-500"}`}>
-                  {mensagem}
+                <div className={`flex items-center gap-2 p-4 rounded-lg ${
+                  tipo === "success" 
+                    ? "bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400" 
+                    : "bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-400"
+                }`}>
+                  {tipo === "success" ? (
+                    <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
+                  ) : (
+                    <XCircle className="h-5 w-5 flex-shrink-0" />
+                  )}
+                  <span>{mensagem}</span>
                 </div>
               )}
               <Button type="submit" className="w-full" disabled={enviando}>
@@ -143,6 +163,9 @@ export function Contato() {
               </Button>
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_subject" value="Nova mensagem do portfólio - Contato" />
+              <input type="hidden" name="_from" value="Portfólio - Lucas Duran" />
+              <input type="hidden" name="_format" value="plain" />
             </form>
           </CardContent>
         </Card>
