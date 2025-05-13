@@ -11,8 +11,7 @@ export function Habilidades() {
       "React",
       "Next.js",
       "Tailwind CSS",
-      "Styled Components",
-      "Redux",
+      "Bootstrap"
     ],
     backend: ["Node.js", "Python", "NestJS", "Ruby", "Ruby on Rails"],
     database: ["MySQL", "PostgreSQL", "Redis", "Prisma"],
