@@ -13,7 +13,7 @@ export function Experiencia() {
     },
     {
       id: 2,
-      cargo: "Analista de Sistema",
+      cargo: "Analista de Sistemas",
       empresa: "Companhia De Aguas E Esgotos De Rondonia - CAERD",
       periodo: "2024 - 2025",
       descricao: "Desenvolvimento web com Ruby, Node.js, TypeScript, Next.js, utilizando banco de dados postgres e prisma para aplicações externas e internas.",
