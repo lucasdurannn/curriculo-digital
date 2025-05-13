@@ -3,7 +3,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTitle, DialogTrigger, DialogClose } from "@/components/ui/dialog"
 import { ExternalLink, Github, X } from "lucide-react"
 
 export function Projetos() {
@@ -54,16 +54,18 @@ export function Projetos() {
                   />
                 </div>
               </DialogTrigger>
-              {/* <DialogContent className="max-w-5xl w-[95%] p-0 overflow-hidden">
+              <DialogContent className="max-w-5xl w-[95%] p-0 overflow-hidden">
                 <div className="relative">
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    className="absolute right-2 top-2 z-50 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background/90"
-                    onClick={() => document.querySelector('button[aria-label="Close"]')?.click()}
-                  >
-                    <X className="h-4 w-4" />
-                  </Button>
+                  <DialogClose asChild>
+                    <Button 
+                      variant="ghost" 
+                      size="icon"
+                      className="absolute right-2 top-2 z-50 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background/90"
+                    >
+                      <X className="h-4 w-4" />
+                      <span className="sr-only">Fechar</span>
+                    </Button>
+                  </DialogClose>
                   <DialogTitle className="sr-only">
                     {projeto.titulo}
                   </DialogTitle>
@@ -73,7 +75,7 @@ export function Projetos() {
                     className="w-full h-auto max-h-[85vh] object-contain"
                   />
                 </div>
-              </DialogContent> */}
+              </DialogContent>
             </Dialog>
             
             <CardHeader>
@@ -89,18 +91,6 @@ export function Projetos() {
                 ))}
               </div>
             </CardContent>
-            {/* <CardFooter className="flex gap-2">
-              <Button variant="outline" size="sm" asChild>
-                <a href={projeto.github} target="_blank" rel="noopener noreferrer">
-                  <Github className="mr-2 h-4 w-4" /> GitHub
-                </a>
-              </Button>
-              <Button size="sm" asChild>
-                <a href={projeto.demo} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="mr-2 h-4 w-4" /> Demo
-                </a>
-              </Button>
-            </CardFooter> */}
           </Card>
         ))}
       </div>
