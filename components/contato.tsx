@@ -1,10 +1,15 @@
+"use client"
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react"
+import { useState } from "react"
 
 export function Contato() {
+  const [enviando, setEnviando] = useState(false)
+
   return (
     <section id="contato" className="py-16">
       <h2 className="text-3xl font-bold mb-8">Contato</h2>
@@ -63,36 +68,43 @@ export function Contato() {
             <CardDescription>Preencha o formulário abaixo para entrar em contato</CardDescription>
           </CardHeader>
           <CardContent>
-            <form className="space-y-4">
+            <form 
+              action="https://formsubmit.co/61c62659a004dedb68a747b09a60baf2" 
+              method="POST"
+              onSubmit={() => setEnviando(true)}
+              className="space-y-4"
+            >
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="nome" className="text-sm font-medium">
                     Nome
                   </label>
-                  <Input id="nome" placeholder="Seu nome" />
+                  <Input required name="name" id="nome" placeholder="Seu nome" />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium">
                     Email
                   </label>
-                  <Input id="email" type="email" placeholder="seu@email.com" />
+                  <Input required name="email" id="email" type="email" placeholder="seu@email.com" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label htmlFor="assunto" className="text-sm font-medium">
                   Assunto
                 </label>
-                <Input id="assunto" placeholder="Assunto da mensagem" />
+                <Input required name="subject" id="assunto" placeholder="Assunto da mensagem" />
               </div>
               <div className="space-y-2">
                 <label htmlFor="mensagem" className="text-sm font-medium">
                   Mensagem
                 </label>
-                <Textarea id="mensagem" placeholder="Sua mensagem" rows={5} />
+                <Textarea required name="message" id="mensagem" placeholder="Sua mensagem" rows={5} />
               </div>
-              <Button type="submit" className="w-full">
-                Enviar Mensagem
+              <Button type="submit" className="w-full" disabled={enviando}>
+                {enviando ? "Enviando..." : "Enviar Mensagem"}
               </Button>
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" value="https://lucasduran-dev.vercel.app/" />
             </form>
           </CardContent>
         </Card>

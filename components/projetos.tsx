@@ -54,7 +54,7 @@ export function Projetos() {
                   />
                 </div>
               </DialogTrigger>
-              <DialogContent className="max-w-5xl w-[95%] p-0 overflow-hidden">
+              {/* <DialogContent className="max-w-5xl w-[95%] p-0 overflow-hidden">
                 <div className="relative">
                   <Button 
                     variant="ghost" 
@@ -73,7 +73,7 @@ export function Projetos() {
                     className="w-full h-auto max-h-[85vh] object-contain"
                   />
                 </div>
-              </DialogContent>
+              </DialogContent> */}
             </Dialog>
             
             <CardHeader>
@@ -89,7 +89,7 @@ export function Projetos() {
                 ))}
               </div>
             </CardContent>
-            <CardFooter className="flex gap-2">
+            {/* <CardFooter className="flex gap-2">
               <Button variant="outline" size="sm" asChild>
                 <a href={projeto.github} target="_blank" rel="noopener noreferrer">
                   <Github className="mr-2 h-4 w-4" /> GitHub
@@ -100,7 +100,7 @@ export function Projetos() {
                   <ExternalLink className="mr-2 h-4 w-4" /> Demo
                 </a>
               </Button>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         ))}
       </div>
