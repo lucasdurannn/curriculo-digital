@@ -22,7 +22,7 @@ export function Contato() {
       const form = e.currentTarget
       const formData = new FormData(form)
       
-      const response = await fetch("https://formsubmit.co/ajax/lucasxd1939@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/61c62659a004dedb68a747b09a60baf2", {
         method: "POST",
         headers: {
           'Accept': 'application/json'
